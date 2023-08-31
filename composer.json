@@ -1,0 +1,44 @@
+{
+    "name": "raid/core-model",
+    "description": "Raid Core Model Package",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "minimum-stability": "dev",
+    "keywords": [
+        "laravel",
+        "raid",
+        "core",
+        "model"
+    ],
+    "require": {
+        "php": "^8.2",
+        "tucker-eric/eloquentfilter": "^3.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Raid\\Core\\Model\\": "src"
+        }
+    },
+    "scripts": {
+        "pint": [
+            "./vendor/bin/pint --config pint.json "
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Raid\\Core\\Model\\Providers\\ModelServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "mohamed_khedr",
+            "email": "mohamedkhedr700@gmail.com"
+        }
+    ]
+}
