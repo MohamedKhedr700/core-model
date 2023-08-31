@@ -26,5 +26,6 @@ class ModelServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->registerModel();
     }
 }

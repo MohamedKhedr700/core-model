@@ -2,6 +2,8 @@
 
 namespace Raid\Core\Model\Auth\Traits\Provider;
 
+use Raid\Core\Model\Models\Contracts\ModelInterface;
+
 trait WithModelProvider
 {
     /**
@@ -29,5 +31,15 @@ trait WithModelProvider
         foreach ($helpers as $helper) {
             require_once $helper;
         }
+    }
+
+    /**
+     * Register model interface.
+     */
+    private function registerModel(): void
+    {
+        $modelHandler = config('model.model_handler', []);
+
+        $this->app->bind(ModelInterface::class, $modelHandler);
     }
 }
