@@ -6,7 +6,7 @@ use Illuminate\Support\Arr;
 
 trait Attributable
 {
-    use WithFillableAttributes;
+    use WithFillableAttribute;
 
     /**
      * Shared attributes.

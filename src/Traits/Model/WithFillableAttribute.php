@@ -4,7 +4,7 @@ namespace Raid\Core\Model\Traits\Model;
 
 use Raid\Core\Model\Models\Attribute\Attribute;
 
-trait WithFillableAttributes
+trait WithFillableAttribute
 {
     /**
      * Fill an attribute.

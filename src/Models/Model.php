@@ -33,6 +33,7 @@ class Model extends BaseModel implements ModelInterface
         parent::boot();
 
         static::created(function ($model) {
+            static::fillCreatedBy($model);
             static::fillModelId($model);
         });
 
