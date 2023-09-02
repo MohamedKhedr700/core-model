@@ -2,7 +2,7 @@
 
 namespace Raid\Core\Model\Traits\Error;
 
-use Raid\Core\Model\Errors;
+use Raid\Core\Model\Errors\Errors;
 
 trait WithErrors
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Raid\Core\Model;
+namespace Raid\Core\Model\Errors;
 
 use Illuminate\Support\MessageBag;
 
