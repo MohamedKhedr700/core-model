@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\ServiceProvider;
-use Raid\Core\Model\Auth\Traits\Provider\WithModelProvider;
+use Raid\Core\Model\Traits\Provider\WithModelProvider;
 
 class ModelServiceProvider extends ServiceProvider
 {

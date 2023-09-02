@@ -2,7 +2,6 @@
 
 namespace Raid\Core\Model\Models;
 
-use Jenssegers\Mongodb\Eloquent\Model as BaseModel;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
 use Raid\Core\Model\Traits\Model\Attributable;
 use Raid\Core\Model\Traits\Model\Changeable;

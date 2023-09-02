@@ -1,6 +1,6 @@
 <?php
 
-namespace Raid\Core\Model\Auth\Traits\Provider;
+namespace Raid\Core\Model\Traits\Provider;
 
 use Raid\Core\Model\Models\Contracts\ModelInterface;
 
