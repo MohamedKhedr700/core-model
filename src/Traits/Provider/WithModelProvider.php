@@ -2,6 +2,7 @@
 
 namespace Raid\Core\Model\Traits\Provider;
 
+use Raid\Core\Model\Models\BaseModel;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
 
 trait WithModelProvider
@@ -38,8 +39,28 @@ trait WithModelProvider
      */
     private function registerModel(): void
     {
+        $this->registerBaseModel();
+        $this->registerModelHandler();
+    }
+
+    /**
+     * Register base model.
+     */
+    private function registerBaseModel(): void
+    {
+        $baseModel = config('model.base_model', '');
+
+        $this->app->alias(BaseModel::class, $baseModel);
+    }
+
+    /**
+     * Register model handler.
+     */
+    private function registerModelHandler(): void
+    {
         $modelHandler = config('model.model_handler', '');
 
         $this->app->bind(ModelInterface::class, $modelHandler);
     }
+
 }
