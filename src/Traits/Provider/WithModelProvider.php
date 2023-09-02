@@ -3,6 +3,7 @@
 namespace Raid\Core\Model\Traits\Provider;
 
 use Illuminate\Foundation\AliasLoader;
+use Raid\Core\Model\Models\BaseModel;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
 
 trait WithModelProvider
@@ -48,9 +49,9 @@ trait WithModelProvider
      */
     private function registerBaseModel(): void
     {
-        $baseModel = config('model.base_model', '');
+        $baseModel = config('model.base_model', Jenssegers\Mongodb\Eloquent\Model::class);
 
-        AliasLoader::getInstance()->alias(\Raid\Core\Model\Models\BaseModel::class, $baseModel);
+        AliasLoader::getInstance()->alias(BaseModel::class, $baseModel);
     }
 
     /**
