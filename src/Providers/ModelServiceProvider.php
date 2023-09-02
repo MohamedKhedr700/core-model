@@ -1,5 +1,7 @@
 <?php
 
+namespace Raid\Core\Model\Providers;
+
 use Illuminate\Support\ServiceProvider;
 use Raid\Core\Model\Traits\Provider\WithModelProvider;
 
