@@ -13,7 +13,6 @@
     ],
     "require": {
         "php": "^8.2",
-        "mongodb/laravel-mongodb": "^3.9",
         "tucker-eric/eloquentfilter": "^3.0"
     },
     "require-dev": {
