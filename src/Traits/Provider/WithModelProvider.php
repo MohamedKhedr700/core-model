@@ -2,7 +2,7 @@
 
 namespace Raid\Core\Model\Traits\Provider;
 
-use Raid\Core\Model\Models\BaseModel;
+use Illuminate\Foundation\AliasLoader;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
 
 trait WithModelProvider
@@ -50,7 +50,7 @@ trait WithModelProvider
     {
         $baseModel = config('model.base_model', '');
 
-        $this->app->alias(BaseModel::class, $baseModel);
+        AliasLoader::getInstance()->alias(\Raid\Core\Model\Models\BaseModel::class, $baseModel);
     }
 
     /**
