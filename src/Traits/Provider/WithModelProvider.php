@@ -38,7 +38,7 @@ trait WithModelProvider
      */
     private function registerModel(): void
     {
-        $modelHandler = config('model.model_handler', []);
+        $modelHandler = config('model.model_handler', '');
 
         $this->app->bind(ModelInterface::class, $modelHandler);
     }
