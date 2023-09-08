@@ -21,6 +21,7 @@ class ModelServiceProvider extends ServiceProvider
     {
         $this->registerConfig();
         $this->registerHelpers();
+        $this->registerCommands();
     }
 
     /**

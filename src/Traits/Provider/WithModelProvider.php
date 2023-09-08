@@ -18,7 +18,7 @@ trait WithModelProvider
 
             $this->publishes([
                 $config => config_path(basename($config)),
-            ], 'config');
+            ], 'config-model');
         }
     }
 
@@ -32,6 +32,14 @@ trait WithModelProvider
         foreach ($helpers as $helper) {
             require_once $helper;
         }
+    }
+
+    /**
+     * Register commands.
+     */
+    private function registerCommands(): void
+    {
+        $this->commands($this->commands);
     }
 
     /**
