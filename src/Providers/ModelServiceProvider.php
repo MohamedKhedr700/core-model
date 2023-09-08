@@ -3,6 +3,7 @@
 namespace Raid\Core\Model\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Raid\Core\Gate\Commands\PublishCommand;
 use Raid\Core\Model\Traits\Provider\WithModelProvider;
 
 class ModelServiceProvider extends ServiceProvider
@@ -12,7 +13,9 @@ class ModelServiceProvider extends ServiceProvider
     /**
      * The commands to be registered.
      */
-    protected array $commands = [];
+    protected array $commands = [
+        PublishCommand::class,
+    ];
 
     /**
      * Register any application services.
