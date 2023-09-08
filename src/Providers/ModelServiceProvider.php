@@ -3,8 +3,8 @@
 namespace Raid\Core\Model\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Raid\Core\Gate\Commands\PublishCommand;
 use Raid\Core\Model\Traits\Provider\WithModelProvider;
+use Raid\Core\Model\Commands\PublishCommand;
 
 class ModelServiceProvider extends ServiceProvider
 {
