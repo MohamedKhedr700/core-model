@@ -3,8 +3,9 @@
 namespace Raid\Core\Model\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Raid\Core\Model\Commands\CreateModelCommand;
 use Raid\Core\Model\Traits\Provider\WithModelProvider;
-use Raid\Core\Model\Commands\PublishCommand;
+use Raid\Core\Model\Commands\PublishModelCommand;
 
 class ModelServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,8 @@ class ModelServiceProvider extends ServiceProvider
      * The commands to be registered.
      */
     protected array $commands = [
-        PublishCommand::class,
+        CreateModelCommand::class,
+        PublishModelCommand::class,
     ];
 
     /**

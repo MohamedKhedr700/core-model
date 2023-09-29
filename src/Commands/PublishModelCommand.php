@@ -2,13 +2,14 @@
 
 namespace Raid\Core\Model\Commands;
 
-use \Illuminate\Console\Command;
-class PublishCommand extends Command
+use Raid\Core\Command\Commands\PublishCommand;
+
+class PublishModelCommand extends PublishCommand
 {
     /**
      * The console command name.
      */
-    protected $name = 'publish:core-model';
+    protected $name = 'core:publish-model';
 
     /**
      * The console command description.
@@ -20,8 +21,6 @@ class PublishCommand extends Command
      */
     public function handle(): void
     {
-        $this->call('vendor:publish', [
-            '--tag' => 'config-model'
-        ]);
+        $this->publishCommand('config-model');
     }
 }
