@@ -1,0 +1,14 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Raid\Core\Model\Models\Contracts\ModelInterface;
+use Raid\Core\Model\Models\Model;
+
+class $CLASS_NAME$ extends Model implements ModelInterface
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected $fillable = [];
+}

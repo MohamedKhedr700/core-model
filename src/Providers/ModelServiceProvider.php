@@ -4,6 +4,7 @@ namespace Raid\Core\Model\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Raid\Core\Model\Commands\CreateModelCommand;
+use Raid\Core\Model\Commands\CreateModelFilterCommand;
 use Raid\Core\Model\Traits\Provider\WithModelProvider;
 use Raid\Core\Model\Commands\PublishModelCommand;
 
@@ -16,6 +17,7 @@ class ModelServiceProvider extends ServiceProvider
      */
     protected array $commands = [
         CreateModelCommand::class,
+        CreateModelFilterCommand::class,
         PublishModelCommand::class,
     ];
 
