@@ -1,0 +1,9 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Raid\Core\Model\Models\Filter\ModelFilter;
+
+class $CLASS_NAME$ extends ModelFilter
+{
+}
