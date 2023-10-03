@@ -23,13 +23,20 @@ class PostController extends Controller
     /**
      * Invoke the controller method.
      */
-    public function __invoke(Post $post)
+    public function __invoke(Request $request): JsonResponse
     {
-        Post::gates('show', $post);
+        $post = new Post();
 
-        // or using the authorize method.
-        Post::gates()->authorize('show', $post);
+        // instead of this pattern.
+        // $post->title = $request->get('title');
+        // $title = $post->title;
         
+        // we can use this pattern.
+        $post->fillAttribute('title', $request->get('title'));
+        
+        $title = $post->attribute('title', '');
+        
+        // this didn't save the model, but we can deal with that later.
         return response()->json([
             'post' => $post,
         ]);
@@ -39,163 +46,119 @@ class PostController extends Controller
 
 # How to work this
 
-Let's start with our gateable class ex:`Post` model.
+Let's start with our model class ex:`Post` model.
 
 ``` php
 <?php
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Raid\Core\Gate\Traits\Gate\Gateable;
+use Raid\Core\Model\Models\Model;
 
 class Post extends Model
 {
-    use Gateable;
 }
 ```
 
-The gateable class must use `Gateable` trait.
+The `Model` class `MUST` extends the package `Model` class.
 
-To define the gates, we can use two ways.
 
-But remember if `getGates` method is defined, the `config/gate.php` gates will be ignored.
-
-1.Define `getGates` method.
-
-``` php
-<?php
-
-namespace App\Models;
-
-use App\Http\Gates\PostGate;
-use Illuminate\Database\Eloquent\Model;
-use Raid\Core\Gate\Traits\Gate\Gateable;
-
-class User extends Model
-{
-    use Gateable;
-    
-    /**
-     * Get gateable gates.
-     */
-    public static function getGates(): array
-    {
-        return [
-            // here we define our gate classes.
-            PostGate::class,
-        ];
-    }
-}
-```
-
-2. Define `config/gate.php` events.
-
-``` php
-'gates' => [
-    // here we define our gateable class.
-    Post::class => [
-        // here we define our gate classes.
-        PostGate::class,
-    ],
-], 
-```
-
-Now, let's create our gate class `PostGate`.
+Now, let's create our model class `Post`.
 
 you can use this command to create the gate class.
 
 ``` bash
-php artisan core:make-gate PostGate
+php artisan core:make-model Post
 ```
-Here is the gate class.
+Here is the model class.
 
 ``` php
 <?php
 
-namespace App\Http\Gates;
+namespace App\Models;
 
-use Raid\Core\Gate\Gates\Contracts\GateInterface;
-use Raid\Core\Gate\Gates\Gate;
+use Raid\Core\Model\Models\Contracts\ModelInterface;
+use Raid\Core\Model\Models\Model;
 
-class PostGate extends Gate implements GateInterface
+class Post extends Model implements ModelInterface
 {
     /**
      * {@inheritdoc}
      */
-    public const ACTIONS = [];
+    protected $fillable = [];
 }
 ```
 
-The gate class must implement `GateInterface` interface.
+The model class must implement `ModelInterface` interface.
 
-The gate class must extend `Gate` class.
+The model class must extend `Model` class.
 
-The gate class must define `ACTIONS` constant, which is the gate methods that will be defined with the `Illuminate\Support\Facades\Gate` class.
 
-Let's define our gate first method.
-
-``` php
-<?php
-
-namespace App\Http\Gates;
-
-use App\Models\Post;
-use App\Models\User;
-use Raid\Core\Gate\Gates\Contracts\GateInterface;
-use Raid\Core\Gate\Gates\Gate;
-
-class PostGate extends Gate implements GateInterface
-{
-    /**
-     * {@inheritdoc}
-     */
-    public const ACTIONS = [
-        'show',
-    ];
-
-    /**
-     * Determine if the user can show the post.
-     */
-    public function show(User $user, Post $post): bool
-    {
-        return $post->isPublic() || $user->isAdmin() || $user->isAuthor($post);
-    }
-}
-```
-
-Great, now we can use the `show` method/action in the `PostController`.
+Great, now we can work with our new model class.
 
 ``` php
-<?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     /**
      * Invoke the controller method.
      */
-    public function __invoke(Post $post)
+    public function __invoke(Request $request): JsonResponse
     {
-        Post::gates()->authorize('show', $post);
+        $post = new Post();
 
+        // work with a single attribute and can pass a default value.
+        $post->fillAttribute('title', $request->get('title'));
+
+        // work with a single attribute and can pass a default value.
+        $post->forceFillAttribute('title', $request->get('title'));
+
+        // work with multiple attribute.
+        $post->fillAttributes([
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+        ]);
+
+        // work with multiple attribute.
+        $post->forceFillAttributes([
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+        ]);
+
+        // get single attribute value and can pass a default value.
+        $attribute = $post->attribute('title', '');
+
+        // get multiple attribute values
+        $attributes = $post->attributes('title', 'content');
+
+        // determine if the model has an attribute.
+        $hasAttribute = $post->hasAttribute('title');
+        
+        
         return response()->json([
-            'post' => $post,
+            'resource' => $post,
         ]);
     }
 }
 ```
 
-The `gates` method is a static method that will be called from the `gateable` trait.
+The `fillAttribute` method will fill the attribute value, but it will not save it to the database.
 
-The `authorize` method is a method that will lead to call `Illuminate\Support\Facades\Gate` class authorize method.
+The `forceFillAttribute` method will fill the attribute value, and it will save it to the database.
 
-The `authorize` method will throw `Illuminate\Auth\Access\AuthorizationException` exception if the gate method returns `false`.
+The `fillAttributes` method will fill the attributes values, but it will not save it to the database.
 
-The `authorize` method will return based on defined actions in the related gate class.
+The `forceFillAttributes` method will fill the attributes values, and it will save it to the database.
+
+The `attribute` method will return the attribute value.
+
+
+
 
 And that's it.
 

@@ -73,10 +73,10 @@ trait Attributable
     /**
      * Save model attributes.
      */
-    public function saveAttributes(bool $forceFill = true, array $options = []): static
+    public function saveAttributes(bool $forceFill = true, array $attributes = []): static
     {
         if ($forceFill) {
-            parent::save($options);
+            parent::save($attributes);
         }
 
         return $this;
