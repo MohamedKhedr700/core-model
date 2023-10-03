@@ -4,14 +4,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Model Handler
+    | Model Manager
     |--------------------------------------------------------------------------
-    | Here you may specify the default model handler.
+    | Here you may specify the default model manager.
     |
     |
     */
 
-    'model_handler' => \Raid\Core\Model\Models\Model::class,
+    'model_manager' => \Raid\Core\Model\Models\Model::class,
 
 
     /*
@@ -19,7 +19,7 @@ return [
     | Base Model
     |--------------------------------------------------------------------------
     |
-    | This option allows you to specify the base model for model_handler.
+    | This option allows you to specify the base model for model_manager.
     |
     */
 

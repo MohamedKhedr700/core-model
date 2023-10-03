@@ -48,7 +48,7 @@ trait WithModelProvider
     private function registerModel(): void
     {
         $this->registerBaseModel();
-        $this->registerModelHandler();
+        $this->registerModelManager();
     }
 
     /**
@@ -62,13 +62,13 @@ trait WithModelProvider
     }
 
     /**
-     * Register model handler.
+     * Register model manager.
      */
-    private function registerModelHandler(): void
+    private function registerModelManager(): void
     {
-        $modelHandler = config('model.model_handler', '');
+        $modelManager = config('model.model_manager', '');
 
-        $this->app->bind(ModelInterface::class, $modelHandler);
+        $this->app->bind(ModelInterface::class, $modelManager);
     }
 
 }
