@@ -2,7 +2,9 @@
 
 namespace Raid\Core\Model\Traits\Provider;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\AliasLoader;
+use Raid\Core\Model\Models\BaseModel;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
 
 trait WithModelProvider
@@ -56,9 +58,9 @@ trait WithModelProvider
      */
     private function registerBaseModel(): void
     {
-        $baseModel = config('model.base_model', \Illuminate\Database\Eloquent\Model::class);
+        $baseModel = config('model.base_model', Model::class);
 
-        AliasLoader::getInstance()->alias(\Raid\Core\Model\Models\BaseModel::class, $baseModel);
+        AliasLoader::getInstance()->alias(BaseModel::class, $baseModel);
     }
 
     /**
@@ -66,9 +68,8 @@ trait WithModelProvider
      */
     private function registerModelManager(): void
     {
-        $modelManager = config('model.model_manager', '');
+        $modelManager = config('model.model_manager', null);
 
         $this->app->bind(ModelInterface::class, $modelManager);
     }
-
 }
