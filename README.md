@@ -123,9 +123,11 @@ class PostController extends Controller
 }
 ```
 
-The `fillAttribute` method will fill the attribute value, but it will not save it to the database.
+- The `fillAttribute` method will fill the attribute value, but it will not save it to the database.
 
-The `fillAttributes` method will fill the attributes values, but it will not save it to the database.
+- The `fillAttributes` method will fill the attributes values, but it will not save it to the database.
+
+<br>
 
 2. Force fill the model attributes.
 
@@ -157,9 +159,11 @@ class PostController extends Controller
 }
 ```
 
-The `forceFillAttribute` method will fill the attribute value, and it will save it to the database.
+- The `forceFillAttribute` method will fill the attribute value, and it will save it to the database.
 
-The `forceFillAttributes` method will fill the attributes values, and it will save it to the database.
+- The `forceFillAttributes` method will fill the attributes values, and it will save it to the database.
+
+<br>
 
 3. Get the model attributes.
 
@@ -186,11 +190,13 @@ class PostController extends Controller
     }
 }
 ```
-The `attribute` method will return the attribute value.
+- The `attribute` method will return the attribute value if it exists, otherwise, it will return the default value.
 
-The `attributes` method will return the attributes values.
+- The `attributes` method will return the attributes values.
 
-The `hasAttribute` method will return `true` if the model has the attribute, otherwise, it will return `false`.
+- The `hasAttribute` method will return `true` if the model has the attribute, otherwise, it will return `false`.
+
+<br>
 
 We have another method to fill the model attributes, and it by using the `Raid\Core\Model\Models\Attribute\Attribute` class.
 
