@@ -37,9 +37,6 @@ class PostController extends Controller
         $title = $post->attribute('title', '');
         
         // this didn't save the model, but we can deal with that later.
-        return response()->json([
-            'post' => $post,
-        ]);
     }
 }
 ```
@@ -96,6 +93,10 @@ The model class must extend `Model` class.
 
 Great, now we can work with our new model class.
 
+1. Fill the model attributes.
+
+    this will not save the model to the database.
+
 ``` php
 namespace App\Http\Controllers;
 
@@ -112,36 +113,11 @@ class PostController extends Controller
     {
         $post = new Post();
 
-        // work with a single attribute and can pass a default value.
         $post->fillAttribute('title', $request->get('title'));
 
-        // work with a single attribute and can pass a default value.
-        $post->forceFillAttribute('title', $request->get('title'));
-
-        // work with multiple attribute.
         $post->fillAttributes([
             'title' => $request->get('title'),
             'content' => $request->get('content'),
-        ]);
-
-        // work with multiple attribute.
-        $post->forceFillAttributes([
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
-        ]);
-
-        // get single attribute value and can pass a default value.
-        $attribute = $post->attribute('title', '');
-
-        // get multiple attribute values
-        $attributes = $post->attributes('title', 'content');
-
-        // determine if the model has an attribute.
-        $hasAttribute = $post->hasAttribute('title');
-        
-        
-        return response()->json([
-            'resource' => $post,
         ]);
     }
 }
@@ -149,15 +125,107 @@ class PostController extends Controller
 
 The `fillAttribute` method will fill the attribute value, but it will not save it to the database.
 
-The `forceFillAttribute` method will fill the attribute value, and it will save it to the database.
-
 The `fillAttributes` method will fill the attributes values, but it will not save it to the database.
+
+2. Force fill the model attributes.
+
+    this will save the model to the database.
+
+``` php
+namespace App\Http\Controllers;
+
+use App\Models\Post;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class PostController extends Controller
+{
+    /**
+     * Invoke the controller method.
+     */
+    public function __invoke(Request $request): JsonResponse
+    {
+        $post = new Post();
+
+        $post->forceFillAttribute('title', $request->get('title'));
+
+        $post->forceFillAttributes([
+            'title' => $request->get('title'),
+            'content' => $request->get('content'),
+        ]);
+    }
+}
+```
+
+The `forceFillAttribute` method will fill the attribute value, and it will save it to the database.
 
 The `forceFillAttributes` method will fill the attributes values, and it will save it to the database.
 
+3. Get the model attributes.
+
+
+``` php
+namespace App\Http\Controllers;
+
+use App\Models\Post;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class PostController extends Controller
+{
+    /**
+     * Invoke the controller method.
+     */
+    public function __invoke(Post $post): JsonResponse
+    {
+        $attribute = $post->attribute('title', '');
+
+        $attributes = $post->attributes('title', 'content');
+
+        $hasAttribute = $post->hasAttribute('title');
+    }
+}
+```
 The `attribute` method will return the attribute value.
 
+The `attributes` method will return the attributes values.
 
+The `hasAttribute` method will return `true` if the model has the attribute, otherwise, it will return `false`.
+
+We have another method to fill the model attributes, and it by using the `Raid\Core\Model\Models\Attribute\Attribute` class.
+
+``` php
+namespace App\Http\Controllers;
+
+use App\Models\Post;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Raid\Core\Model\Models\Attribute\Attribute;
+
+class PostController extends Controller
+{
+    /**
+     * Invoke the controller method.
+     */
+    public function __invoke(Post $post): JsonResponse
+    {
+        $attribute = new Attribute();
+
+        $attribute->attribute('title');
+
+        $attribute->value($request->get('title'));
+
+        $attribute->default('default title value');
+        
+        $attribute->forceFill(true);
+        
+        $post->fillAttr($attribute);
+
+        // or to force fill the attribute
+        $post->forceFillAttr($attribute);
+    }
+}
+```
 
 
 And that's it.

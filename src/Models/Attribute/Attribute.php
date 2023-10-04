@@ -48,9 +48,9 @@ class Attribute
     /**
      * Set attribute value.
      */
-    public function value(mixed $value): static
+    public function value(mixed $value, mixed $default = null): static
     {
-        $this->value = $value;
+        $this->value = $value ?? $default;
 
         return $this;
     }
