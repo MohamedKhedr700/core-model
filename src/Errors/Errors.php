@@ -12,11 +12,6 @@ class Errors
     protected MessageBag $messageBag;
 
     /**
-     * Errors array.
-     */
-    protected array $errors = [];
-
-    /**
      * Create a new errors instance.
      */
     public function __construct()
