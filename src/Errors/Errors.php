@@ -9,7 +9,7 @@ class Errors
     /**
      * Message bag instance.
      */
-    protected ?MessageBag $messageBag = null;
+    protected MessageBag $messageBag;
 
     /**
      * Errors array.
@@ -17,13 +17,11 @@ class Errors
     protected array $errors = [];
 
     /**
-     * Add an error message.
+     * Create a new errors instance.
      */
-    public function add(string $key, string $message): void
+    public function __construct()
     {
-        $this->messageBag = (new MessageBag())->add($key, $message);
-
-        $this->errors[] = $this->messageBag;
+        $this->messageBag = new MessageBag();
     }
 
     /**
@@ -35,33 +33,20 @@ class Errors
     }
 
     /**
-     * Get the errors.
+     * Add an error message.
      */
-    public function errors(): array
+    public function add(string $key, string $message): void
     {
-        return $this->errors;
+        $this->messageBag()->add($key, $message);
     }
 
     /**
+     *
      * Determine if the message bag has any errors.
      */
     public function any(): bool
     {
-        return (bool) $this->messageBag()?->any();
-    }
-
-    /**
-     * Get the errors as an array.
-     */
-    public function toArray(): array
-    {
-        $errors = [];
-
-        foreach ($this->errors() as $error) {
-            $errors = array_merge_recursive($errors, $error->toArray());
-        }
-
-        return $errors;
+        return $this->messageBag()->any();
     }
 
     /**
@@ -69,6 +54,22 @@ class Errors
      */
     public function first(): string
     {
-        return (string) $this->messageBag()?->first();
+        return $this->messageBag()->first();
+    }
+
+    /**
+     * Get the errors.
+     */
+    public function errors(): array
+    {
+        return $this->messageBag()->messages();
+    }
+
+    /**
+     * Get the errors as an array.
+     */
+    public function toArray(): array
+    {
+        return $this->messageBag()->toArray();
     }
 }
