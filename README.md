@@ -234,6 +234,7 @@ class PostController extends Controller
 }
 ```
 
+<br>
 
 And that's it.
 
@@ -252,8 +253,7 @@ instead of using the issue tracker.
 
 ## About Raid
 
-Raid is a PHP framework created by **[Mohamed Khedr](https://github.com/MohamedKhedr700)**
-
+Raid is a PHP framework created by **[Mohamed Khedr](https://github.com/MohamedKhedr700)**,
 and it is maintained by **[Mohamed Khedr](https://github.com/MohamedKhedr700)**.
 
 ## Support Raid
