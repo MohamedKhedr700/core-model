@@ -59,7 +59,7 @@ class Post extends Model
 
 The `Model` class `MUST` extends the package `Model` class.
 
-\
+<br>
 
 Now, let's create our model class `Post`.
 
@@ -128,7 +128,7 @@ class PostController extends Controller
 
 - The `fillAttributes` method will fill the attributes values, but it will not save it to the database.
 
-\
+<br>
 
 2. Force fill the model attributes.
 
@@ -164,7 +164,7 @@ class PostController extends Controller
 
 - The `forceFillAttributes` method will fill the attributes values, and it will save it to the database.
 
-\
+<br>
 
 3. Get the model attributes.
 
@@ -197,7 +197,7 @@ class PostController extends Controller
 
 - The `hasAttribute` method will return `true` if the model has the attribute, otherwise, it will return `false`.
 
-\
+<br>
 
 We have another method to fill the model attributes, and it by using the `Raid\Core\Model\Models\Attribute\Attribute` class.
 
