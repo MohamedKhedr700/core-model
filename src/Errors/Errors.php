@@ -66,6 +66,14 @@ class Errors
     }
 
     /**
+     * Get the first error message for the given key.
+     */
+    public function getFirst(string $key): ?string
+    {
+        return $this->messageBag()->get($key)[0] ?? null;
+    }
+
+    /**
      * Get the errors as an array.
      */
     public function toArray(): array
