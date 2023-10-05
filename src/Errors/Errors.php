@@ -58,6 +58,14 @@ class Errors
     }
 
     /**
+     * Get the given key errors.
+     */
+    public function get(string $key): array
+    {
+        return $this->messageBag()->get($key);
+    }
+
+    /**
      * Get the errors as an array.
      */
     public function toArray(): array
