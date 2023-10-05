@@ -52,7 +52,6 @@ class Errors
     }
 
     /**
-     *
      * Determine if the message bag has any errors.
      */
     public function any(): bool
@@ -63,27 +62,27 @@ class Errors
     /**
      * Get the first error message.
      */
-    public function first(): string
+    public function first(string $key = null): ?string
     {
-        return $this->messageBag()->first();
+        return $key ? $this->firstError($key) : ($this->messageBag()->first() ?? null);
+    }
+
+    /**
+     * Get the last error message.
+     */
+    public function last(string $key = null): ?string
+    {
+        $errors = $this->messageBag()->get($key);
+
+        return $errors[count($errors) - 1] ?? null;
     }
 
     /**
      * Get the first error message for the given key.
      */
-    public function getFirst(string $key): ?string
+    public function firstError(string $key): ?string
     {
         return $this->messageBag()->get($key)[0] ?? null;
-    }
-
-    /**
-     * Get the last error message for the given key.
-     */
-    public function getLast(string $key): ?string
-    {
-        $errors = $this->messageBag()->get($key);
-
-        return $errors[count($errors) - 1] ?? null;
     }
 
     /**

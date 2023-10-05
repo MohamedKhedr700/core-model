@@ -6,5 +6,4 @@ use Jenssegers\Mongodb\Eloquent\Model;
 
 class BaseModel extends Model
 {
-
 }

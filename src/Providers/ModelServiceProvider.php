@@ -5,8 +5,8 @@ namespace Raid\Core\Model\Providers;
 use Illuminate\Support\ServiceProvider;
 use Raid\Core\Model\Commands\CreateModelCommand;
 use Raid\Core\Model\Commands\CreateModelFilterCommand;
-use Raid\Core\Model\Traits\Provider\WithModelProvider;
 use Raid\Core\Model\Commands\PublishModelCommand;
+use Raid\Core\Model\Traits\Provider\WithModelProvider;
 
 class ModelServiceProvider extends ServiceProvider
 {

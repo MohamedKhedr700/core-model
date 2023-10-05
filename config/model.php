@@ -13,7 +13,6 @@ return [
 
     'model_manager' => \Raid\Core\Model\Models\Model::class,
 
-
     /*
     |--------------------------------------------------------------------------
     | Base Model
