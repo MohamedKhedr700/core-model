@@ -86,6 +86,14 @@ class Errors
     }
 
     /**
+     * Get all the messages for every key.
+     */
+    public function all(string $format = null): array
+    {
+        return $this->messageBag()->all($format);
+    }
+
+    /**
      * Get the errors as an array.
      */
     public function toArray(): array
