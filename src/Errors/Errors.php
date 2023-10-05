@@ -58,14 +58,6 @@ class Errors
     }
 
     /**
-     * Get the errors.
-     */
-    public function errors(): array
-    {
-        return $this->messageBag()->messages();
-    }
-
-    /**
      * Get the errors as an array.
      */
     public function toArray(): array
