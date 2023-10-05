@@ -36,6 +36,22 @@ class Errors
     }
 
     /**
+     * Determine if the message bag has any errors for the given key.
+     */
+    public function has(string $key): bool
+    {
+        return $this->messageBag()->has($key);
+    }
+
+    /**
+     * Get the given key errors.
+     */
+    public function get(string $key): array
+    {
+        return $this->messageBag()->get($key);
+    }
+
+    /**
      *
      * Determine if the message bag has any errors.
      */
@@ -53,14 +69,6 @@ class Errors
     }
 
     /**
-     * Get the given key errors.
-     */
-    public function get(string $key): array
-    {
-        return $this->messageBag()->get($key);
-    }
-
-    /**
      * Get the first error message for the given key.
      */
     public function getFirst(string $key): ?string
@@ -69,10 +77,28 @@ class Errors
     }
 
     /**
+     * Get the last error message for the given key.
+     */
+    public function getLast(string $key): ?string
+    {
+        $errors = $this->messageBag()->get($key);
+
+        return $errors[count($errors) - 1] ?? null;
+    }
+
+    /**
      * Get the errors as an array.
      */
     public function toArray(): array
     {
         return $this->messageBag()->toArray();
+    }
+
+    /**
+     * Get the errors as JSON.
+     */
+    public function toJson(int $options = JSON_ERROR_NONE): string
+    {
+        return $this->messageBag()->toJson($options);
     }
 }
