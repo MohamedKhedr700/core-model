@@ -22,5 +22,5 @@ return [
     |
     */
 
-    'base_model' => Jenssegers\Mongodb\Eloquent\Model::class,
+    'base_model' => \MongoDB\Laravel\Eloquent\Model::class,
 ];
