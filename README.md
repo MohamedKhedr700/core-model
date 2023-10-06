@@ -91,6 +91,8 @@ The model class must extend `Model` class.
 
 Great, now we can work with our new model class.
 
+<br>
+
 ### Fill model attributes.
 
 This will not save the model to the database.
@@ -124,6 +126,8 @@ class PostController extends Controller
 - The `fillAttribute` method will fill the attribute value, but it will not save it to the database.
 
 - The `fillAttributes` method will fill the attributes values, but it will not save it to the database.
+
+<br>
 
 ### Force fill model attributes.
 
@@ -159,6 +163,8 @@ class PostController extends Controller
 
 - The `forceFillAttributes` method will fill the attributes values, and it will save it to the database.
 
+<br>
+
 ### Get model attributes.
 
 ``` php
@@ -189,6 +195,8 @@ class PostController extends Controller
 
 - The `hasAttribute` method will return `true` if the model has the attribute, otherwise, it will return `false`.
 
+<br>
+
 ### Use Attribute instance
 
 We have another method to fill the model attributes, and it by using the `Raid\Core\Model\Models\Attribute\Attribute` class.
@@ -199,7 +207,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Raid\Core\Model\Models\Attribute\Attribute;
+use Raid\Core\Model\Models\Attribute;
 
 class PostController extends Controller
 {
