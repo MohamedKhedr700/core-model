@@ -43,30 +43,12 @@ class PostController extends Controller
 
 # How to work this
 
-Let's start with our model class ex:`Post` model.
-
-``` php
-<?php
-
-namespace App\Models;
-
-use Raid\Core\Model\Models\Model;
-
-class Post extends Model
-{
-}
-```
-
-The `Model` class must extend the package `Model` class.
-
-Now, let's create our model class `Post`.
-
+Let's start with our model class ex:`Post` model,
 you can use this command to create the model class.
 
 ``` bash
 php artisan core:make-model Post
 ```
-Here is the model class.
 
 ``` php
 <?php
@@ -91,11 +73,9 @@ The model class must extend `Model` class.
 
 Great, now we can work with our new model class.
 
-<br>
-
 ### Fill model attributes.
 
-This will not save the model to the database.
+- This will not save the model to the database.
 
 ``` php
 <?php
@@ -133,7 +113,7 @@ class PostController extends Controller
 
 ### Force fill model attributes.
 
-This will save the model to the database.
+- This will save the model to the database.
 
 ``` php
 <?php
@@ -167,8 +147,6 @@ class PostController extends Controller
 
 - The `forceFillAttributes` method will fill the attributes values, and it will save it to the database.
 
-<br>
-
 ### Get model attributes.
 
 ``` php
@@ -200,8 +178,6 @@ class PostController extends Controller
 - The `attributes` method will return the attributes values.
 
 - The `hasAttribute` method will return `true` if the model has the attribute, otherwise, it will return `false`.
-
-<br>
 
 ### Use Attribute instance
 
@@ -266,7 +242,9 @@ class PostFilter extends ModelFilter
 }
 ```
 
-You need to define `$filter` property in the `post` model, or define `modelFilter` method.
+We need to define the `Post` model filter. 
+
+Using the `filter` property.
 
 ``` php
 <?php
@@ -319,7 +297,7 @@ class Post extends Model implements ModelInterface
 }
 ```
 
-We can use the `filter` method now with our model class, and send our filters to the model.
+Now we can use the `filter` method with our model class, and send our filters to apply it the model.
 
 ``` php
 <?php
