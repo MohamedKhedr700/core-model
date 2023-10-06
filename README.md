@@ -57,9 +57,7 @@ class Post extends Model
 }
 ```
 
-The `Model` class `MUST` extends the package `Model` class.
-
-<br>
+The `Model` class must extend the package `Model` class.
 
 Now, let's create our model class `Post`.
 
@@ -91,12 +89,11 @@ The model class must implement `ModelInterface` interface.
 
 The model class must extend `Model` class.
 
-
 Great, now we can work with our new model class.
 
-1. Fill the model attributes.
+### Fill model attributes.
 
-    this will not save the model to the database.
+This will not save the model to the database.
 
 ``` php
 namespace App\Http\Controllers;
@@ -128,11 +125,9 @@ class PostController extends Controller
 
 - The `fillAttributes` method will fill the attributes values, but it will not save it to the database.
 
-<br>
+### Force fill model attributes.
 
-2. Force fill the model attributes.
-
-    this will save the model to the database.
+This will save the model to the database.
 
 ``` php
 namespace App\Http\Controllers;
@@ -164,10 +159,7 @@ class PostController extends Controller
 
 - The `forceFillAttributes` method will fill the attributes values, and it will save it to the database.
 
-<br>
-
-3. Get the model attributes.
-
+### Get model attributes.
 
 ``` php
 namespace App\Http\Controllers;
@@ -197,7 +189,7 @@ class PostController extends Controller
 
 - The `hasAttribute` method will return `true` if the model has the attribute, otherwise, it will return `false`.
 
-<br>
+### Use Attribute instance
 
 We have another method to fill the model attributes, and it by using the `Raid\Core\Model\Models\Attribute\Attribute` class.
 
@@ -233,8 +225,6 @@ class PostController extends Controller
     }
 }
 ```
-
-<br>
 
 And that's it.
 

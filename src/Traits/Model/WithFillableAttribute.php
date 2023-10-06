@@ -2,7 +2,7 @@
 
 namespace Raid\Core\Model\Traits\Model;
 
-use Raid\Core\Model\Models\Attribute\Attribute;
+use Raid\Core\Model\Attribute;
 
 trait WithFillableAttribute
 {
