@@ -38,7 +38,7 @@ class CreateModelFilterCommand extends CreateCommand
     public function getStubVariables(): array
     {
         return [
-            'NAMESPACE' => 'App\\Models\\ModelFilter',
+            'NAMESPACE' => 'App\\Models\\ModelFilters',
             'CLASS_NAME' => $this->getClassName(),
         ];
     }
@@ -48,6 +48,6 @@ class CreateModelFilterCommand extends CreateCommand
      */
     public function getSourceFilePath(): string
     {
-        return app_path('Models/ModelFilter/'.$this->getClassName()).'.php';
+        return app_path('Models/ModelFilters/'.$this->getClassName()).'.php';
     }
 }
