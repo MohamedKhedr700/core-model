@@ -199,7 +199,7 @@ class PostController extends Controller
 
 ### Use Attribute instance
 
-We have another method to fill the model attributes, and it by using the `Raid\Core\Model\Models\Attribute\Attribute` class.
+We have another method to fill the model attributes, by using the `Raid\Core\Model\Models\Attribute` class.
 
 ``` php
 namespace App\Http\Controllers;
