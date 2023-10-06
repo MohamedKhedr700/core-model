@@ -61,7 +61,7 @@ The `Model` class must extend the package `Model` class.
 
 Now, let's create our model class `Post`.
 
-you can use this command to create the gate class.
+you can use this command to create the model class.
 
 ``` bash
 php artisan core:make-model Post
@@ -98,6 +98,8 @@ Great, now we can work with our new model class.
 This will not save the model to the database.
 
 ``` php
+<?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Post;
@@ -134,6 +136,8 @@ class PostController extends Controller
 This will save the model to the database.
 
 ``` php
+<?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Post;
@@ -168,6 +172,8 @@ class PostController extends Controller
 ### Get model attributes.
 
 ``` php
+<?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Post;
@@ -202,6 +208,8 @@ class PostController extends Controller
 We have another method to fill the model attributes, by using the `Raid\Core\Model\Models\Attribute` class.
 
 ``` php
+<?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Post;
@@ -233,6 +241,131 @@ class PostController extends Controller
     }
 }
 ```
+
+<br>
+
+## Model Filter
+
+We depend on **[tucker-eric/eloquentfilter](https://github.com/Tucker-Eric/EloquentFilter)** to apply model filters.
+
+you can use this command to create the model filter class.
+
+``` bash
+php artisan core:make-model-filter PostFilter
+```
+
+``` php
+<?php
+
+namespace App\Models\ModelFilters;
+
+use Raid\Core\Model\Models\Filter\ModelFilter;
+
+class PostFilter extends ModelFilter
+{
+}
+```
+
+You need to define `$filter` property in the `post` model, or define `modelFilter` method.
+
+``` php
+<?php
+
+namespace App\Models;
+
+use App\Models\ModelFilters\PostFilter;
+use Raid\Core\Model\Models\Contracts\ModelInterface;
+use Raid\Core\Model\Models\Model;
+
+class Post extends Model implements ModelInterface
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected $fillable = [];
+
+    /**
+     * {@inheritdoc}
+     */
+    protected string $filter = PostFilter::class;
+}
+```
+
+or define `modelFilter` method.
+
+``` php
+<?php
+
+namespace App\Models;
+
+use App\Models\ModelFilters\PostFilter;
+use Raid\Core\Model\Models\Contracts\ModelInterface;
+use Raid\Core\Model\Models\Model;
+
+class Post extends Model implements ModelInterface
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected $fillable = [];
+
+    /**
+     * Provide model filter.
+     */
+    public function modelFilter(): ?string
+    {
+        return $this->provideFilter(PostFilter::class);
+    }
+}
+```
+
+We can use the `filter` method now with our model class, and send our filters to the model.
+
+``` php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Post;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class PostController extends Controller
+{
+    /**
+     * Invoke the controller method.
+     */
+    public function __invoke(Request $request): JsonResponse
+    {
+        $posts = Post::filter([
+            'title' => $request->get('title'),
+        ]);
+    }
+}
+```
+
+and in the `PostFilter` class we define our filters.
+
+``` php
+<?php
+
+namespace App\Models\ModelFilters;
+
+use Raid\Core\Model\Models\Filter\ModelFilter;
+
+class PostFilter extends ModelFilter
+{
+    /**
+     * Filter with title.
+     */
+    public function title(string $title): static
+    {
+        return $this->whereLike('title', $title);
+    }
+}
+```
+
+<br>
 
 And that's it.
 
