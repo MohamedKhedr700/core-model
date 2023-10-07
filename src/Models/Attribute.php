@@ -1,6 +1,6 @@
 <?php
 
-namespace Raid\Core\Model;
+namespace Raid\Core\Model\Models;
 
 class Attribute
 {
