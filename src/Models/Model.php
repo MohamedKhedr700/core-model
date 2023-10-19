@@ -47,16 +47,6 @@ class Model extends BaseModel implements ModelInterface
     }
 
     /**
-     * Scope a query to only include posts created by the given account id.
-     */
-    public static function createdByScope(): void
-    {
-        static::addGlobalScope('created_by', function ($query) {
-            $query->where('created_by', auth()->user()?->id);
-        });
-    }
-
-    /**
      * Fill model id.
      */
     protected static function fillModelId(ModelInterface $model): void
