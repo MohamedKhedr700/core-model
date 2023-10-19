@@ -59,7 +59,7 @@ class Model extends BaseModel implements ModelInterface
      */
     protected static function fillCreatedBy(ModelInterface $model): void
     {
-        $model->fillAttribute('created_by', auth()->check() ? auth()->user()->id : null);
+        $model->fillAttribute('created_by', auth()->user()?->id);
     }
 
     /**
@@ -67,7 +67,7 @@ class Model extends BaseModel implements ModelInterface
      */
     protected static function fillUpdatedBy(ModelInterface $model): void
     {
-        $model->fillAttribute('updated_by', auth()->check() ? auth()->user()->id : null);
+        $model->fillAttribute('updated_by', auth()->user()?->id);
     }
 
     /**
