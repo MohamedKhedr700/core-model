@@ -52,7 +52,7 @@ class Model extends BaseModel implements ModelInterface
     public static function createdByScope(): void
     {
         static::addGlobalScope('created_by', function ($query) {
-            $query->where('created_by', auth()->id());
+            $query->where('created_by', auth()->user()?->id);
         });
     }
 
