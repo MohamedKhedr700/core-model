@@ -5,19 +5,19 @@ namespace Raid\Core\Model\Models;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
 use Raid\Core\Model\Traits\Model\Attributable;
 use Raid\Core\Model\Traits\Model\Changeable;
-use Raid\Core\Model\Traits\Model\Embeddable;
+use Raid\Core\Model\Traits\Model\Associatable;
 use Raid\Core\Model\Traits\Model\Filterable;
 use Raid\Core\Model\Traits\Model\Shareable;
-use Raid\Core\Model\Traits\Model\WithEmbedded;
+use Raid\Core\Model\Traits\Model\WithAssociatable;
 
 class Model extends BaseModel implements ModelInterface
 {
-    use Attributable,
-        Changeable,
-        Embeddable,
-        Filterable,
-        Shareable,
-        WithEmbedded;
+    use Associatable;
+    use Attributable;
+    use Changeable;
+    use Filterable;
+    use Shareable;
+    use WithAssociatable;
 
     /**
      * {@inheritdoc}
