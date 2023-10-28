@@ -7,10 +7,8 @@ trait Embeddable
     /**
      * Define shared data to be embedded to a resource.
      */
-    public function toEmbed(): array
+    public function toEmbedded(): array
     {
-        return $this->only([
-            'id',
-        ]);
+        return $this->attributes('id');
     }
 }
