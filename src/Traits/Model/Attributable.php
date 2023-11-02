@@ -14,11 +14,6 @@ trait Attributable
     public const SHARED_ATTRIBUTES = [];
 
     /**
-     * {@inheritdoc}
-     */
-    protected $primaryKey = '_id';
-
-    /**
      * Get shared attributes.
      */
     public static function sharedAttributes(): array
@@ -32,6 +27,14 @@ trait Attributable
     public static function primaryKey(): string
     {
         return (new static())->getKeyName();
+    }
+
+    /**
+     * Get model primary key name.
+     */
+    public function getKeyName(): string
+    {
+        return '_id';
     }
 
     /**

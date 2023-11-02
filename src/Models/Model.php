@@ -10,7 +10,7 @@ use Raid\Core\Model\Traits\Model\Filterable;
 use Raid\Core\Model\Traits\Model\Shareable;
 use Raid\Core\Model\Traits\Model\WithAssociatable;
 
-class Model extends BaseModel implements ModelInterface
+class Model extends TransparentModel implements ModelInterface
 {
     use Associatable;
     use Attributable;

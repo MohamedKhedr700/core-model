@@ -15,12 +15,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Base Model
+    | Transparent Model
     |--------------------------------------------------------------------------
     |
-    | This option allows you to specify the base model for model_manager.
+    | This option allows you to specify the transparent model for the model manager.
     |
     */
 
-    'base_model' => \MongoDB\Laravel\Eloquent\Model::class,
+    'transparent_model' => \Raid\Core\Model\Models\Mongodb\MongodbModel::class,
 ];

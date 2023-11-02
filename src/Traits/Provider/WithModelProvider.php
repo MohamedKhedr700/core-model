@@ -2,10 +2,9 @@
 
 namespace Raid\Core\Model\Traits\Provider;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\AliasLoader;
-use Raid\Core\Model\Models\BaseModel;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
+use Raid\Core\Model\Models\TransparentModel;
 
 trait WithModelProvider
 {
@@ -49,18 +48,18 @@ trait WithModelProvider
      */
     private function registerModel(): void
     {
-        $this->registerBaseModel();
+        $this->registerTransparentModel();
         $this->registerModelManager();
     }
 
     /**
-     * Register a base model.
+     * Register a transparent model.
      */
-    private function registerBaseModel(): void
+    private function registerTransparentModel(): void
     {
-        $baseModel = config('model.base_model', Model::class);
+        $parentModel = config('model.transparent_model', Illuminate\Database\Eloquent\Model::class);
 
-        AliasLoader::getInstance()->alias(BaseModel::class, $baseModel);
+        AliasLoader::getInstance()->alias(TransparentModel::class, $parentModel);
     }
 
     /**
