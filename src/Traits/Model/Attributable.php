@@ -30,14 +30,6 @@ trait Attributable
     }
 
     /**
-     * Get model primary key name.
-     */
-    public function getKeyName(): string
-    {
-        return '_id';
-    }
-
-    /**
      * Get model id.
      */
     public function getId(): ?string
