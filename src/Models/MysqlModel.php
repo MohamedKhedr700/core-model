@@ -1,6 +1,6 @@
 <?php
 
-namespace Raid\Core\Model\Models\Mongodb;
+namespace Raid\Core\Model\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
