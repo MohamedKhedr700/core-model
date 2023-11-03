@@ -14,15 +14,6 @@ trait Bootable
         parent::boot();
 
         static::bootObservable();
-
-//        static::created(function ($model) {
-//            static::createdObserve($model);
-//            static::fillCreatedBy($model);
-//        });
-//
-//        static::updating(function ($model) {
-//            static::updatingObserve($model);
-//        });
     }
 
     /**
