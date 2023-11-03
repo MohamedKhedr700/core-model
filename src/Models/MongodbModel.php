@@ -34,7 +34,6 @@ class MongodbModel extends Model implements ModelInterface
      */
     public static function createdObserve(ModelInterface $model): void
     {
-        static::fillCreatedBy($model);
         static::fillModelId($model);
     }
 
