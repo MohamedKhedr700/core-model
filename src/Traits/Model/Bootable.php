@@ -13,13 +13,16 @@ trait Bootable
     {
         parent::boot();
 
-        static::created(function ($model) {
-            static::fillCreatedBy($model);
-        });
+        static::bootObservable();
 
-        static::updating(function ($model) {
-            static::fillUpdatedBy($model);
-        });
+//        static::created(function ($model) {
+//            static::createdObserve($model);
+//            static::fillCreatedBy($model);
+//        });
+//
+//        static::updating(function ($model) {
+//            static::updatingObserve($model);
+//        });
     }
 
     /**

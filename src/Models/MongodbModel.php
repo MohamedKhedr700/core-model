@@ -9,6 +9,7 @@ use Raid\Core\Model\Traits\Model\Attributable;
 use Raid\Core\Model\Traits\Model\Bootable;
 use Raid\Core\Model\Traits\Model\Changeable;
 use Raid\Core\Model\Traits\Model\Filterable;
+use Raid\Core\Model\Traits\Model\Observable;
 use Raid\Core\Model\Traits\Model\Shareable;
 use Raid\Core\Model\Traits\Model\WithAssociatable;
 
@@ -19,6 +20,7 @@ class MongodbModel extends Model implements ModelInterface
     use Bootable;
     use Changeable;
     use Filterable;
+    use Observable;
     use Shareable;
     use WithAssociatable;
 
