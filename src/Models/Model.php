@@ -13,11 +13,4 @@ use Raid\Core\Model\Traits\Model\WithAssociatable;
 
 class Model extends MysqlModel implements ModelInterface
 {
-    use Associatable;
-    use Attributable;
-    use Bootable;
-    use Changeable;
-    use Filterable;
-    use Shareable;
-    use WithAssociatable;
 }
