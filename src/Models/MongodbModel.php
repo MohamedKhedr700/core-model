@@ -32,13 +32,10 @@ class MongodbModel extends Model implements ModelInterface
     /**
      * {@inheritdoc}
      */
-    protected static function boot(): void
+    public static function createdObserve(ModelInterface $model): void
     {
-        parent::boot();
-
-        static::created(function ($model) {
-            static::fillModelId($model);
-        });
+        static::fillCreatedBy($model);
+        static::fillModelId($model);
     }
 
     /**
