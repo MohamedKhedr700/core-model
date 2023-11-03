@@ -48,18 +48,7 @@ trait WithModelProvider
      */
     private function registerModel(): void
     {
-        $this->registerTransparentModel();
         $this->registerModelManager();
-    }
-
-    /**
-     * Register a transparent model.
-     */
-    private function registerTransparentModel(): void
-    {
-        $parentModel = config('model.transparent_model', Illuminate\Database\Eloquent\Model::class);
-
-        AliasLoader::getInstance()->alias(TransparentModel::class, $parentModel);
     }
 
     /**
