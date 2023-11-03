@@ -11,7 +11,7 @@ use Raid\Core\Model\Traits\Model\Filterable;
 use Raid\Core\Model\Traits\Model\Shareable;
 use Raid\Core\Model\Traits\Model\WithAssociatable;
 
-class Model implements ModelInterface
+class Model extends MysqlModel implements ModelInterface
 {
     use Associatable;
     use Attributable;
