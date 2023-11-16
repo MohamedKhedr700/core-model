@@ -2,9 +2,7 @@
 
 namespace Raid\Core\Model\Traits\Provider;
 
-use Illuminate\Foundation\AliasLoader;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
-use Raid\Core\Model\Models\TransparentModel;
 
 trait WithModelProvider
 {

@@ -11,5 +11,5 @@ return [
     |
     */
 
-    'model_manager' => \Raid\Core\Model\Models\MysqlModel::class,
+    'model_manager' => \Raid\Core\Model\Models\MongodbModel::class,
 ];
