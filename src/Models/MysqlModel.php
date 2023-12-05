@@ -45,6 +45,8 @@ class MysqlModel extends Model implements ModelInterface
      */
     public static function creatingObserve(ModelInterface $model): void
     {
+        parent::creatingObserve($model);
+
         static::fillModelId($model);
     }
 
