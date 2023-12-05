@@ -41,7 +41,7 @@ trait Observable
      */
     public static function creatingObserve(ModelInterface $model): void
     {
-        static::fillCreatedBy($model);
+        //
     }
 
     /**
@@ -57,7 +57,7 @@ trait Observable
      */
     public static function updatingObserve(ModelInterface $model): void
     {
-        static::fillUpdatedBy($model);
+        //
     }
 
     /**
