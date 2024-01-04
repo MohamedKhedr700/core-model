@@ -13,6 +13,7 @@ use Raid\Core\Model\Traits\Model\Filterable;
 use Raid\Core\Model\Traits\Model\Observable;
 use Raid\Core\Model\Traits\Model\Shareable;
 use Raid\Core\Model\Traits\Model\WithAssociatable;
+use Raid\Core\Model\Traits\Model\WithFactory;
 
 class MysqlModel extends Model implements ModelInterface
 {
@@ -24,6 +25,7 @@ class MysqlModel extends Model implements ModelInterface
     use Observable;
     use Shareable;
     use WithAssociatable;
+    use WithFactory;
 
     /**
      * {@inheritdoc}
