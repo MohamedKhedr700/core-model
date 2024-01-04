@@ -12,13 +12,13 @@ trait WithFactory
     /**
      * The model factory instance.
      */
-    protected static ?string $factory = null;
+    protected static string $factory;
 
     /**
      * Create a new factory instance for the model.
      */
-    protected static function newFactory(): ?Factory
+    protected static function newFactory(): Factory
     {
-        return static::$factory ? static::$factory::new() : null;
+        return static::$factory::new();
     }
 }
