@@ -15,6 +15,14 @@ trait WithFactory
     protected static string $factory;
 
     /**
+     * Get factory class.
+     */
+    public static function getFactoryClass(): string
+    {
+        return static::$factory;
+    }
+
+    /**
      * Create a new factory instance for the model.
      */
     protected static function newFactory(): Factory
