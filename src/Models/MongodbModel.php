@@ -2,6 +2,7 @@
 
 namespace Raid\Core\Model\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use MongoDB\Laravel\Eloquent\Model;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
 use Raid\Core\Model\Traits\Model\Associatable;
@@ -25,6 +26,7 @@ class MongodbModel extends Model implements ModelInterface
     use Shareable;
     use WithAssociatable;
     use WithFactory;
+    use HasUuids;
 
     /**
      * {@inheritdoc}
@@ -32,26 +34,10 @@ class MongodbModel extends Model implements ModelInterface
     protected $fillable = [];
 
     /**
-     * {@inheritdoc}
-     */
-    public static function createdObserve(ModelInterface $model): void
-    {
-        static::fillModelId($model);
-    }
-
-    /**
      * Get model primary key name.
      */
     public function getKeyName(): string
     {
         return '_id';
-    }
-
-    /**
-     * Fill model id.
-     */
-    protected static function fillModelId(ModelInterface $model): void
-    {
-        $model->forceFillAttribute('id', $model->getId());
     }
 }

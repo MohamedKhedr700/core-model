@@ -2,6 +2,7 @@
 
 namespace Raid\Core\Model\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Raid\Core\Model\Models\Contracts\ModelInterface;
@@ -26,35 +27,10 @@ class MysqlModel extends Model implements ModelInterface
     use Shareable;
     use WithAssociatable;
     use WithFactory;
+    use HasUuids;
 
     /**
      * {@inheritdoc}
      */
     protected $fillable = [];
-
-    /**
-     * {@inheritdoc}
-     */
-    public $incrementing = false;
-
-    /**
-     * {@inheritdoc}
-     */
-    public $keyType = 'string';
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function creatingObserve(ModelInterface $model): void
-    {
-        static::fillModelId($model);
-    }
-
-    /**
-     * Fill model id.
-     */
-    protected static function fillModelId(ModelInterface $model): void
-    {
-        $model->fillAttribute('id', Str::uuid());
-    }
 }
